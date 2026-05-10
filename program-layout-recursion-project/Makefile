@@ -7,8 +7,11 @@ LDFLAGS :=
 TARGET  := bin/recursion_demo
 SRCS    := src/main.c src/factorial.c
 OBJS    := $(SRCS:src/%.c=build/%.o)
+DEPS    := $(OBJS:.o=.d)
 
-.PHONY: all run clean
+-include $(DEPS)
+
+.PHONY: all run clean rebuild
 
 all: $(TARGET)
 
@@ -16,7 +19,7 @@ $(TARGET): $(OBJS) | bin build
 	$(CC) $(LDFLAGS) -o $@ $(OBJS)
 
 build/%.o: src/%.c | build
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -MMD -MP -MF build/$*.d -c $< -o $@
 
 bin:
 	mkdir -p bin
@@ -29,3 +32,5 @@ run: $(TARGET)
 
 clean:
 	rm -rf bin build
+
+rebuild: clean all
