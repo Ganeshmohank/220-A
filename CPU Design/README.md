@@ -6,6 +6,41 @@ and three demo programs.
 
 ---
 
+## Before you run (prerequisites)
+
+You need a normal developer setup—not extra libraries, just a compiler and `make`.
+
+
+| Requirement          | Notes                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Operating system** | macOS or Linux (Windows: use WSL2 or adapt the commands).                                                                 |
+| `**make`**           | Usually pre-installed on macOS; on Linux: `sudo apt install build-essential` (Debian/Ubuntu) or your distro’s equivalent. |
+| `**g++` with C++17** | The `Makefile` uses `g++`. Check: `g++ --version`. On macOS, install Xcode Command Line Tools: `xcode-select --install`.  |
+
+
+**Download the project** (zip from your host/GitHub, or `git clone`). If the folder name has spaces (e.g. `220 A project`), quote paths in the terminal:
+
+```bash
+cd "/path/to/220 A project"
+```
+
+---
+
+## Quick start (easiest path for graders / recordings)
+
+One script builds everything and runs Hello World:
+
+```bash
+chmod +x demo.sh    # first time only (Unix)
+./demo.sh           # default: hello demo
+./demo.sh fibonacci
+./demo.sh timer
+```
+
+Or manually: `make` then `./cpu exec programs/hello.asm` (see **Demo Commands** below).
+
+---
+
 ## Project Structure
 
 ```
@@ -35,18 +70,6 @@ and three demo programs.
 
 ---
 
-## Requirements
-
-- macOS (or Linux)
-- `g++` or `clang++` with C++17 support
-
-Check your compiler:
-```bash
-g++ --version
-```
-
----
-
 ## Build
 
 From the `CPU Design` directory (where the `Makefile` lives):
@@ -56,13 +79,13 @@ cd "CPU Design"
 make
 ```
 
-This compiles all `src/*.cpp` files and produces the `./cpu` executable.
+This compiles all `src/*.cpp` files and produces the `./cpu` executable. The same step runs automatically if you use `./demo.sh`.
 
 ---
 
 ## Demo Commands
 
-Run these **in order** to see every feature of SPARTAN-16.
+Run these **in order** to see every feature of SPARTAN-16 (after `make` or `./demo.sh` has built `cpu` once).
 
 ### Step 1 — Hello, World!
 
@@ -71,6 +94,7 @@ Run these **in order** to see every feature of SPARTAN-16.
 ```
 
 Expected output:
+
 ```
 Assembled 51 bytes → 'programs/hello.bin'  (load addr 0x0000)
 Loaded 51 bytes at 0x0000 from 'programs/hello.bin'
@@ -99,6 +123,7 @@ showing PC, disassembled opcode, flags, and cycle count.
 ```
 
 Expected output (first 10 Fibonacci numbers):
+
 ```
 0
 1
@@ -183,8 +208,10 @@ See `docs/isa.md` for the full instruction set reference.
 See `docs/schematic.txt` for the ASCII architecture diagram.
 
 Key facts:
+
 - **35 opcodes**: ALU (R-type + I-type), memory, branches, stack
 - **4-byte fixed-width instructions** (little-endian)
 - **MMIO at 0xF000–0xFFFF**: character output, number output, timer, stdin
 - **Stack** grows downward from 0xEFFE
 - **Two-pass assembler**: supports labels, `.org`, `.string`, `.word`, `.byte`, `.align`
+
