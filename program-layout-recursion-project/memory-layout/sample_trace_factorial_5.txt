@@ -1,0 +1,16 @@
+=== Recursion demo: factorial(5) ===
+main: calling factorial(5) ...
+
+  -> factorial(5) ENTER
+  -> factorial(4) ENTER
+  -> factorial(3) ENTER
+  -> factorial(2) ENTER
+  -> factorial(1) ENTER
+  <- factorial(1) RETURN 1 (base case)
+  <- factorial(2) RETURN 2 (= 2 * factorial(1))
+  <- factorial(3) RETURN 6 (= 3 * factorial(2))
+  <- factorial(4) RETURN 24 (= 4 * factorial(3))
+  <- factorial(5) RETURN 120 (= 5 * factorial(4))
+
+main: factorial(5) returned 120
+Expected: 5! = 120
