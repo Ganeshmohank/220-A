@@ -6,6 +6,67 @@ and three demo programs.
 
 ---
 
+## Before you run (prerequisites)
+
+You need a normal developer setup—not extra libraries, just a compiler and `make`.
+
+| Requirement | Notes |
+|-------------|--------|
+| **Operating system** | macOS or Linux (Windows: use WSL2 or adapt the commands). |
+| **`make`** | Usually pre-installed on macOS; on Linux: `sudo apt install build-essential` (Debian/Ubuntu) or your distro’s equivalent. |
+| **`g++` with C++17** | The `Makefile` uses `g++`. Check: `g++ --version`. On macOS, install Xcode Command Line Tools: `xcode-select --install`. |
+
+**Download the project** (zip from your host/GitHub, or `git clone`). If the folder name has spaces (e.g. `220 A project`), quote paths in the terminal:
+
+```bash
+cd "/path/to/220 A project"
+```
+
+---
+
+## Quick start (easiest path for graders / recordings)
+
+One script builds everything and runs Hello World:
+
+```bash
+chmod +x demo.sh    # first time only (Unix)
+./demo.sh           # default: hello demo
+./demo.sh fibonacci
+./demo.sh timer
+```
+
+Or manually: `make` then `./cpu exec programs/hello.asm` (see **Demo Commands** below).
+
+---
+
+## Recording / what to say (suggested order)
+
+Use this as a loose script while you screen-record; adjust timing to your rubric.
+
+1. **Intro (your project in one sentence)**  
+   “This is SPARTAN-16—a 16-bit CPU simulated in software in C++17, with its own instruction set, assembler, and demos that run on the emulator.”
+
+2. **What someone needs on their machine**  
+   “To run it you only need `make` and `g++` with C++17—no extra packages. On a Mac that’s usually the Xcode Command Line Tools.”
+
+3. **High-level architecture (before live commands)**  
+   “The design has a register file, ALU, control unit doing fetch–decode–execute, memory, and a bus that maps part of the address space to I/O. The diagram is in `docs/schematic.txt`, and the full ISA is in `docs/isa.md`.”  
+   *(Optional: show `docs/schematic.txt` or your block diagram for 30–60 seconds.)*
+
+4. **Prove it’s easy to run**  
+   “From the project folder I’ll run the provided script—it builds and runs the hello program.”  
+   Run: `./demo.sh` (or `make && ./cpu exec programs/hello.asm`).
+
+5. **Show one more behavior**  
+   “Here’s Fibonacci output” / “here’s execution with `--trace` so you can see each instruction” — pick one short command from **Demo Commands**.
+
+6. **Close**  
+   “Source is under `src/`, assembly demos under `programs/`, and the README lists all commands for assemble-only and pre-built binaries.”
+
+**File-by-file tour + Fibonacci-only narration:** see [`docs/demo-video-script.md`](docs/demo-video-script.md) (what to say for each source file and a line-by-line Fibonacci walkthrough for the demo video).
+
+---
+
 ## Project Structure
 
 ```
@@ -29,19 +90,8 @@ and three demo programs.
 │   ├── schematic.txt     ASCII-art CPU architecture diagram
 │   └── isa.md            Full ISA reference (registers, opcodes, addressing)
 ├── Makefile
+├── demo.sh               One-command build + demo (hello / fibonacci / timer)
 └── README.md
-```
-
----
-
-## Requirements
-
-- macOS (or Linux)
-- `g++` or `clang++` with C++17 support
-
-Check your compiler:
-```bash
-g++ --version
 ```
 
 ---
@@ -52,13 +102,13 @@ g++ --version
 make
 ```
 
-This compiles all `src/*.cpp` files and produces the `./cpu` executable.
+This compiles all `src/*.cpp` files and produces the `./cpu` executable. The same step runs automatically if you use `./demo.sh`.
 
 ---
 
 ## Demo Commands
 
-Run these **in order** to see every feature of SPARTAN-16.
+Run these **in order** to see every feature of SPARTAN-16 (after `make` or `./demo.sh` has built `cpu` once).
 
 ### Step 1 — Hello, World!
 
