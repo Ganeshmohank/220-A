@@ -105,31 +105,35 @@
   \begin{center}
     \ttfamily git clone \url{\GitHubCloneURL}
   \end{center}
-  \item \textbf{Enter} the repository folder (default name \texttt{220-A/}). If your folder name contains spaces, quote the path when using \texttt{cd}.
+  \item \textbf{Enter} the repository folder (clone creates \texttt{220-A/}). If a folder name has spaces, quote the path in \texttt{cd}.
 \end{enumerate}
 
-\subsection*{Build and quick demo}
+\subsection*{Quick start (repo root --- \texttt{demo.sh})}
+\noindent From \texttt{220-A/} (where \texttt{demo.sh} lives):
 \begin{lstlisting}
 cd 220-A
 chmod +x demo.sh
-make
 ./demo.sh
 \end{lstlisting}
 
-\noindent\texttt{./demo.sh} defaults to Hello World; you can pass \texttt{fibonacci} or \texttt{timer}:
+\noindent\texttt{./demo.sh} defaults to Hello World; optional arguments \texttt{fibonacci} or \texttt{timer}:
 \begin{lstlisting}
 ./demo.sh fibonacci
 ./demo.sh timer
 \end{lstlisting}
 
-\subsection*{Run assembled programs directly (after \texttt{make})}
+\subsection*{Manual build (inside \texttt{CPU Design/})}
+\noindent The Makefile and \texttt{./cpu} live under \texttt{CPU Design/} (see repository \texttt{README.md}):
 \begin{lstlisting}
+cd "CPU Design"
+make
 ./cpu exec programs/hello.asm
 ./cpu exec programs/fibonacci.asm
 ./cpu exec programs/timer.asm
 \end{lstlisting}
 
 \subsection*{Trace, dump, assemble-only, and Makefile shortcuts}
+\noindent Run these from \texttt{CPU Design/} after \texttt{make}:
 \begin{lstlisting}
 ./cpu exec programs/hello.asm --trace
 ./cpu exec programs/hello.asm --dump
