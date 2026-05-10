@@ -10,11 +10,13 @@ and three demo programs.
 
 You need a normal developer setup—not extra libraries, just a compiler and `make`.
 
-| Requirement | Notes |
-|-------------|--------|
-| **Operating system** | macOS or Linux (Windows: use WSL2 or adapt the commands). |
-| **`make`** | Usually pre-installed on macOS; on Linux: `sudo apt install build-essential` (Debian/Ubuntu) or your distro’s equivalent. |
-| **`g++` with C++17** | The `Makefile` uses `g++`. Check: `g++ --version`. On macOS, install Xcode Command Line Tools: `xcode-select --install`. |
+
+| Requirement          | Notes                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Operating system** | macOS or Linux (Windows: use WSL2 or adapt the commands).                                                                 |
+| `**make`**           | Usually pre-installed on macOS; on Linux: `sudo apt install build-essential` (Debian/Ubuntu) or your distro’s equivalent. |
+| `**g++` with C++17** | The `Makefile` uses `g++`. Check: `g++ --version`. On macOS, install Xcode Command Line Tools: `xcode-select --install`.  |
+
 
 **Download the project** (zip from your host/GitHub, or `git clone`). If the folder name has spaces (e.g. `220 A project`), quote paths in the terminal:
 
@@ -36,34 +38,6 @@ chmod +x demo.sh    # first time only (Unix)
 ```
 
 Or manually: `make` then `./cpu exec programs/hello.asm` (see **Demo Commands** below).
-
----
-
-## Recording / what to say (suggested order)
-
-Use this as a loose script while you screen-record; adjust timing to your rubric.
-
-1. **Intro (your project in one sentence)**  
-   “This is SPARTAN-16—a 16-bit CPU simulated in software in C++17, with its own instruction set, assembler, and demos that run on the emulator.”
-
-2. **What someone needs on their machine**  
-   “To run it you only need `make` and `g++` with C++17—no extra packages. On a Mac that’s usually the Xcode Command Line Tools.”
-
-3. **High-level architecture (before live commands)**  
-   “The design has a register file, ALU, control unit doing fetch–decode–execute, memory, and a bus that maps part of the address space to I/O. The diagram is in `docs/schematic.txt`, and the full ISA is in `docs/isa.md`.”  
-   *(Optional: show `docs/schematic.txt` or your block diagram for 30–60 seconds.)*
-
-4. **Prove it’s easy to run**  
-   “From the project folder I’ll run the provided script—it builds and runs the hello program.”  
-   Run: `./demo.sh` (or `make && ./cpu exec programs/hello.asm`).
-
-5. **Show one more behavior**  
-   “Here’s Fibonacci output” / “here’s execution with `--trace` so you can see each instruction” — pick one short command from **Demo Commands**.
-
-6. **Close**  
-   “Source is under `src/`, assembly demos under `programs/`, and the README lists all commands for assemble-only and pre-built binaries.”
-
-**File-by-file tour + Fibonacci-only narration:** see [`docs/demo-video-script.md`](docs/demo-video-script.md) (what to say for each source file and a line-by-line Fibonacci walkthrough for the demo video).
 
 ---
 
@@ -117,6 +91,7 @@ Run these **in order** to see every feature of SPARTAN-16 (after `make` or `./de
 ```
 
 Expected output:
+
 ```
 Assembled 51 bytes → 'programs/hello.bin'  (load addr 0x0000)
 Loaded 51 bytes at 0x0000 from 'programs/hello.bin'
@@ -145,6 +120,7 @@ showing PC, disassembled opcode, flags, and cycle count.
 ```
 
 Expected output (first 10 Fibonacci numbers):
+
 ```
 0
 1
@@ -229,8 +205,10 @@ See `docs/isa.md` for the full instruction set reference.
 See `docs/schematic.txt` for the ASCII architecture diagram.
 
 Key facts:
+
 - **35 opcodes**: ALU (R-type + I-type), memory, branches, stack
 - **4-byte fixed-width instructions** (little-endian)
 - **MMIO at 0xF000–0xFFFF**: character output, number output, timer, stdin
 - **Stack** grows downward from 0xEFFE
 - **Two-pass assembler**: supports labels, `.org`, `.string`, `.word`, `.byte`, `.align`
+
