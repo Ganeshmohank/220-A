@@ -9,27 +9,28 @@ and three demo programs.
 ## Project Structure
 
 ```
-220 A project/
-├── src/
-│   ├── common.h          Shared type aliases and memory-map constants
-│   ├── isa.h / isa.cpp   ISA: opcodes, encoding, decoding, disassembler
-│   ├── memory.h/.cpp     Physical RAM (64 KB byte array)
-│   ├── cpu.h/.cpp        CPU state: register file, flags, PC, cycle counter
-│   ├── alu.h/.cpp        ALU: arithmetic, logic, shifts, flag computation
-│   ├── bus.h/.cpp        System bus: routes reads/writes to RAM or MMIO
-│   ├── control_unit.h/.cpp  Control unit: Fetch / Decode / Execute pipeline
-│   ├── emulator.h/.cpp   Top-level: load binary, run, hex-dump memory
-│   ├── assembler.h/.cpp  Two-pass assembler: labels, directives, opcodes
-│   └── main.cpp          CLI entry point (assemble / run / exec commands)
-├── programs/
-│   ├── timer.asm         Timer demo — illustrates Fetch/Compute/Store cycles
-│   ├── hello.asm         Hello, World! — string output via MMIO
-│   └── fibonacci.asm     Fibonacci sequence — first 10 values
-├── docs/
-│   ├── schematic.txt     ASCII-art CPU architecture diagram
-│   └── isa.md            Full ISA reference (registers, opcodes, addressing)
-├── Makefile
-└── README.md
+220-A/
+└── CPU Design/
+    ├── src/
+    │   ├── common.h          Shared type aliases and memory-map constants
+    │   ├── isa.h / isa.cpp   ISA: opcodes, encoding, decoding, disassembler
+    │   ├── memory.h/.cpp     Physical RAM (64 KB byte array)
+    │   ├── cpu.h/.cpp        CPU state: register file, flags, PC, cycle counter
+    │   ├── alu.h/.cpp        ALU: arithmetic, logic, shifts, flag computation
+    │   ├── bus.h/.cpp        System bus: routes reads/writes to RAM or MMIO
+    │   ├── control_unit.h/.cpp  Control unit: Fetch / Decode / Execute pipeline
+    │   ├── emulator.h/.cpp   Top-level: load binary, run, hex-dump memory
+    │   ├── assembler.h/.cpp  Two-pass assembler: labels, directives, opcodes
+    │   └── main.cpp          CLI entry point (assemble / run / exec commands)
+    ├── programs/
+    │   ├── timer.asm         Timer demo — illustrates Fetch/Compute/Store cycles
+    │   ├── hello.asm         Hello, World! — string output via MMIO
+    │   └── fibonacci.asm     Fibonacci sequence — first 10 values
+    ├── docs/
+    │   ├── schematic.txt     ASCII-art CPU architecture diagram
+    │   └── isa.md            Full ISA reference (registers, opcodes, addressing)
+    ├── Makefile
+    └── README.md
 ```
 
 ---
@@ -48,7 +49,10 @@ g++ --version
 
 ## Build
 
+From the `CPU Design` directory (where the `Makefile` lives):
+
 ```bash
+cd "CPU Design"
 make
 ```
 
