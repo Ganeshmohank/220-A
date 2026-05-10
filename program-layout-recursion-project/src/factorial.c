@@ -22,8 +22,8 @@ int factorial(int n)
         return 1;
     }
 
-    int smaller = factorial(n - 1);
-    int result = n * smaller;
+    const int smaller = factorial(n - 1);
+    const int result = n * smaller;
 
     printf("  <- factorial(%d) RETURN %d (= %d * factorial(%d))\n",
            n, result, n, n - 1);

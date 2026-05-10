@@ -3,7 +3,8 @@
 
 /*
  * Recursive factorial declaration.
- * n must be non-negative. For this demo we use small n (e.g. 5).
+ * n must be non-negative. Values above ~12 overflow a 32-bit signed int;
+ * the driver clamps input accordingly.
  */
 int factorial(int n);
 
