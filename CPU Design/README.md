@@ -63,7 +63,9 @@ Or manually: `make` then `./cpu exec programs/hello.asm` (see **Demo Commands** 
     │   └── fibonacci.asm     Fibonacci sequence — first 10 values
     ├── docs/
     │   ├── schematic.txt     ASCII-art CPU architecture diagram
-    │   └── isa.md            Full ISA reference (registers, opcodes, addressing)
+    │   ├── isa.md            Full ISA reference (registers, opcodes, addressing)
+    │   ├── cpu_design_report.tex  CMPE-220 CPU Design course report (pdfLaTeX)
+    │   └── REPORT_BUILD.md   Notes for compiling the course report locally
     ├── Makefile
     └── README.md
 ```
