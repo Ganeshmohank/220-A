@@ -38,6 +38,8 @@ make run
 make clean
 ```
 
+After `make`, you can also run `./bin/recursion_demo [n]` directly, where `n` is optional (`0`–`12`; default `5`). `make run` still executes the default demo.
+
 ### Expected output for `factorial(5)`
 
 After `make run`, you should see trace lines for calls `factorial(5)` down to `factorial(1)`, then returns unwinding until the final result **120** is printed in `main`.
